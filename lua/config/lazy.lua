@@ -29,4 +29,6 @@ require("lazy").setup({ { import = "plugins" } },
 		-- disable checks for config file changes
 		change_detection = { enabled = false }
 	}
+
+
 )
