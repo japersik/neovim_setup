@@ -19,8 +19,8 @@ return {
 			},
 			color_overrides = {
 				mocha = {
-					base = "#171717",               -- background
-					surface2 = "#9A9A9A",           -- comments
+					base = "#171717", -- background
+					surface2 = "#9A9A9A", -- comments
 					text = "#F6F6F6"
 				}
 			},

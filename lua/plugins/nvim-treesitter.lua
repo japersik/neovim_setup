@@ -2,9 +2,9 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	dependencies = {
-		{ "nvim-treesitter/nvim-treesitter-textobjects" },   -- Syntax aware text-objects
+		{ "nvim-treesitter/nvim-treesitter-textobjects" }, -- Syntax aware text-objects
 		{
-			"nvim-treesitter/nvim-treesitter-context",         -- Show code context
+			"nvim-treesitter/nvim-treesitter-context",     -- Show code context
 			opts = { enable = true, mode = "topline", line_numbers = true }
 		}
 	},
@@ -30,7 +30,7 @@ return {
 			sync_install = false,
 			highlight = {
 				enable = true,
-				disable = { "csv" }       -- preferring chrisbra/csv.vim
+				disable = { "csv" } -- preferring chrisbra/csv.vim
 			},
 			textobjects = { select = { enable = true, lookahead = true } }
 		})
