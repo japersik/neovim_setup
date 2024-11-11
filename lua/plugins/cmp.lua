@@ -94,13 +94,13 @@ return {
 
 		local lspconfig = require("lspconfig")
 		lspconfig["clangd"].setup {}
---lspconfig.clangd.setup({
---  cmd = { "clangd", "--background-index"
-	--		"--query-driver=/home/japersik/.espressif/tools/xtensa-esp32-elf/esp-12.2.0_20230208/**/bin/xtensa-esp32-elf-*",
---			},
---  root_dir = lspconfig.util.root_pattern('build/compile_commands.json', '.git')
---      -- leave empty to stop nvim from cd'ing into ~/ due to global .clangd file
---})
+		--lspconfig.clangd.setup({
+		--  cmd = { "clangd", "--background-index"
+		--		"--query-driver=/home/japersik/.espressif/tools/xtensa-esp32-elf/esp-12.2.0_20230208/**/bin/xtensa-esp32-elf-*",
+		--			},
+		--  root_dir = lspconfig.util.root_pattern('build/compile_commands.json', '.git')
+		--      -- leave empty to stop nvim from cd'ing into ~/ due to global .clangd file
+		--})
 		-- All languages: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
 		-- Go: go install golang.org/x/tools/gopls@latest
