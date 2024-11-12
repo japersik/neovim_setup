@@ -17,7 +17,7 @@ return {
 		require("go").setup()
 		require("navigator").setup({
 			lsp_signature_help = true, -- enable ray-x/lsp_signature
-			lsp = { format_on_save = true }
+			lsp = { format_on_save = {disable={"c"}} }
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {

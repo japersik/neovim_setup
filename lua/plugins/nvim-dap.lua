@@ -43,17 +43,34 @@ return {
 		-- load mason-nvim-dap here, after all adapters have been setup
 		require("mason-nvim-dap")
 
+		require('dap').set_log_level('DEBUG')
+		
 		vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
-		-- setup dap config by VsCode launch.json file
-		local vscode = require("dap.ext.vscode")
-		local json = require("plenary.json")
-		vscode.json_decode = function(str)
-			return vim.json.decode(json.json_strip_comments(str))
-		end
+		
+		dap = require("dap")
 
-		-- Extends dap.configurations with entries read from .vscode/launch.json
-		if vim.fn.filereadable(".vscode/launch.json") then
-			vscode.load_launchjs()
-		end
-	end,
+		dap.adapters.gdb = {
+			id = 'gdb',
+    	type = 'executable',
+    	command = 'xtensa-esp32-elf-gdb', -- Убедитесь, что это правильно указывает на ваш GDB
+    	name = 'gdb',
+			args = {  '--interpreter=dap', "--eval-command", "target remote localhost:3333"},
+		}
+
+-- Настройка конфигурации для запуска GDB
+		dap.configurations.c = {
+    	{
+    		name = "Launch",
+    		type = "gdb", -- Указываем, что используем адаптер "cpp"
+    		request = "launch",
+    		program = function()
+      		return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    		end,
+    		cwd = '${workspaceFolder}',
+    		stopOnEntry = true,
+    		args = {},
+    		miDebuggerPath = '/home/japersik/.espressif/tools/xtensa-esp-elf-gdb/14.2_20240403/xtensa-esp-elf-gdb/bin/xtensa-esp32-elf-gdb', -- путь к gdb
+			}
+}
+	end
 }

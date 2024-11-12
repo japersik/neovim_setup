@@ -67,7 +67,7 @@ return {
 			formatting = {
 				format = lspkind.cmp_format({
 					mode = "symbol_text",
-					maxwidth = 70,
+					maxwidth = 120,
 					show_labelDetails = true
 				})
 			}
