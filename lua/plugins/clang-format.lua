@@ -3,6 +3,8 @@ return {
 	init = function()
 		vim.cmd([[
 			autocmd FileType proto ClangFormatAutoEnable
-]])
+			autocmd FileType c ClangFormatAutoEnable
+			autocmd FileType h ClangFormatAutoEnable
+		]])
 	end
 }

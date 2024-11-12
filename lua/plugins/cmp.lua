@@ -73,49 +73,30 @@ return {
 			}
 		})
 
+		-- setup custom lsp configs
 		local configs = require('lspconfig.configs')
-		local util = require('lspconfig.util')
-		-- https://github.com/lasorda/protobuf-language-server
 		configs["buf-beta-lsp"] = {
 			default_config = {
-				cmd = { 'buf', 'beta', 'lsp' },
+				cmd = { 'buf', 'beta', 'lsp', "--timeout=0", "--log-format=text" },
 				filetypes = { 'proto' },
-				root_dir = util.root_pattern('.git'),
-				single_file_support = true,
-				settings = {
-					["additional-proto-dirs"] = {
-						"vendor",
-						"third_party",
-					},
-				},
+				root_dir = require('lspconfig.util').root_pattern('buf.yaml', 'buf.gen.yaml', '.git'),
 			},
 		}
-
+		configs["clangd"] = { default_config = { filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' } } }
 
 		local lspconfig = require("lspconfig")
-		lspconfig["clangd"].setup {}
-		--lspconfig.clangd.setup({
-		--  cmd = { "clangd", "--background-index"
-		--		"--query-driver=/home/japersik/.espressif/tools/xtensa-esp32-elf/esp-12.2.0_20230208/**/bin/xtensa-esp32-elf-*",
-		--			},
-		--  root_dir = lspconfig.util.root_pattern('build/compile_commands.json', '.git')
-		--      -- leave empty to stop nvim from cd'ing into ~/ due to global .clangd file
-		--})
-		-- All languages: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-
+		-- -- All languages: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 		-- Go: go install golang.org/x/tools/gopls@latest
 		lspconfig["gopls"].setup {}
 
 		-- Python: brew install pyright
 		lspconfig["pyright"].setup {}
 
-
-		-- Ruby: gem install solargraph
-		lspconfig["solargraph"].setup {}
-
-		-- https://phpactor.readthedocs.io/en/master/usage/standalone.html#installation
-		lspconfig["phpactor"].setup {}
-
+		-- https://github.com/bufbuild/buf/
+		-- brew install bufbuild/buf/buf
 		lspconfig["buf-beta-lsp"].setup {}
+
+		-- installation https://clangd.llvm.org/installation.html
+		lspconfig["clangd"].setup {}
 	end
 }
