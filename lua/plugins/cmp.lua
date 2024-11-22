@@ -82,7 +82,7 @@ return {
 				root_dir = require('lspconfig.util').root_pattern('buf.yaml', 'buf.gen.yaml', '.git'),
 			},
 		}
-		configs["clangd"] = { default_config = { filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' } } }
+		--	configs["clangd"] = { default_config = { filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' } } }
 
 		local lspconfig = require("lspconfig")
 		-- -- All languages: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
@@ -98,5 +98,12 @@ return {
 
 		-- installation https://clangd.llvm.org/installation.html
 		lspconfig["clangd"].setup {}
+
+		-- for bash,json,lua, md and yaml
+		lspconfig["bashls"].setup {}
+		lspconfig["jsonls"].setup {}
+		lspconfig["lua_ls"].setup {}
+		lspconfig["marksman"].setup {}
+		lspconfig["yamlls"].setup {}
 	end
 }

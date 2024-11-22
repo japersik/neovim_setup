@@ -56,6 +56,7 @@ return {
 		map("n", "<leader>ff", ":Telescope find_files<CR>")      -- Lists files in your current working directory, respects .gitignore
 		map("n", "<leader>fx", builtin.treesitter, opts)         -- Lists tree-sitter symbols
 		map("n", "<leader>fh", builtin.help_tags, opts)
+		-- !!! install ripgrep to use it
 		map("n", "<leader>fg", builtin.live_grep, opts)
 		map("n", "<leader>fb", builtin.buffers, opts)
 		map("n", "<leader>fs", builtin.spell_suggest, opts) -- Lists spell options
