@@ -96,6 +96,16 @@ return {
 		-- brew install bufbuild/buf/buf
 		lspconfig["buf-beta-lsp"].setup {}
 
+
+
+		lspconfig["volar"].setup {
+			filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+			init_options = {
+				typescript = {
+					tsdk = vim.fn.expand("~/.npm-global/lib/node_modules/typescript/lib")
+				}
+			}
+		}
 		-- installation https://clangd.llvm.org/installation.html
 		lspconfig["clangd"].setup {}
 
@@ -103,7 +113,7 @@ return {
 		lspconfig["bashls"].setup {}
 		lspconfig["jsonls"].setup {}
 		lspconfig["lua_ls"].setup {}
-		lspconfig["marksman"].setup {}
+		--	lspconfig["marksman"].setup {}
 		lspconfig["yamlls"].setup {}
 	end
 }

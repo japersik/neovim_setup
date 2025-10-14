@@ -1,4 +1,3 @@
---[===[
 return {
 	{
 		"williamboman/mason.nvim",
@@ -16,7 +15,7 @@ return {
 
 			require("mason").setup()
 			require("mason-lspconfig").setup({
-				automatic_installation = true,
+				automatic_installation = false,
 			})
 
 			local lspconfig = require('lspconfig')
@@ -33,6 +32,7 @@ return {
 				'rust_analyzer',
 				--        'tsserver',
 				'yamlls',
+				--		'vue_ls'
 			}
 
 			local on_attach = function(client, bufnr)
@@ -103,4 +103,3 @@ return {
 		end
 	}
 }
---]===]
