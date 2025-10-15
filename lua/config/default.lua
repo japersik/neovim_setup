@@ -21,15 +21,16 @@ vim.opt.shiftwidth = 2
 
 
 -- для wayland
-vim.g.clipboard = {
-	name = "wl-clipboard",
-	copy = {
-		["+"] = "wl-copy",
-		["*"] = "wl-copy",
-	},
-	paste = {
-		["+"] = "wl-paste --no-newline",
-		["*"] = "wl-paste --no-newline",
-	},
-	cache_enabled = 1,
-}
+---
+--vim.g.clipboard = {
+--	name = "wl-clipboard",
+--	copy = {
+--		["+"] = "wl-copy",
+--		["*"] = "wl-copy",
+--	},
+--	paste = {
+--		["+"] = "wl-paste --no-newline",
+--		["*"] = "wl-paste --no-newline",
+--	},
+--	cache_enabled = 1,
+--}

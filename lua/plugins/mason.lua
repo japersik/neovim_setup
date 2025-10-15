@@ -15,7 +15,7 @@ return {
 
 			require("mason").setup()
 			require("mason-lspconfig").setup({
-				automatic_installation = false,
+				automatic_installation = true,
 			})
 
 			local lspconfig = require('lspconfig')
@@ -23,16 +23,19 @@ return {
 				'angularls',
 				'bashls',
 				'clangd',
+				'volar',
+				'bashls',
+				'vtsls',
 				'dartls',
 				'jsonls',
 				'lua_ls',
 				'marksman',
 				'pylsp',
+				'buf_ls',
 				--				'rnix',
 				'rust_analyzer',
 				--        'tsserver',
 				'yamlls',
-				--		'vue_ls'
 			}
 
 			local on_attach = function(client, bufnr)
