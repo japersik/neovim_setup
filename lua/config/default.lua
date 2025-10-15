@@ -7,7 +7,7 @@ vim.opt.laststatus = 2
 vim.opt.vb = true
 vim.opt.ruler = true
 vim.opt.spell = true
-vim.opt.spelllang = "en_us"
+vim.opt.spelllang = { "en_us", "ru" }
 vim.opt.autoindent = true
 vim.opt.colorcolumn = "120"
 vim.opt.textwidth = 120
@@ -18,3 +18,19 @@ vim.opt.wildmenu = true
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
+vim.deprecate = function() end
+
+-- для wayland
+---
+--vim.g.clipboard = {
+--	name = "wl-clipboard",
+--	copy = {
+--		["+"] = "wl-copy",
+--		["*"] = "wl-copy",
+--	},
+--	paste = {
+--		["+"] = "wl-paste --no-newline",
+--		["*"] = "wl-paste --no-newline",
+--	},
+--	cache_enabled = 1,
+--}

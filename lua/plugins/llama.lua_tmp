@@ -1,0 +1,6 @@
+return {
+	'jpmcb/nvim-llama',
+	config = function()
+		require("nvim-llama").setup({ debug = false, model = "deepseek-r1:1.5b" })
+	end
+}

@@ -7,7 +7,6 @@ return {
 		"ray-x/lsp_signature.nvim",
 		{
 			"L3MON4D3/LuaSnip",
-			version = "v2.*",
 			build = "make install_jsregexp",
 			dependencies = { "rafamadriz/friendly-snippets" }, -- Snippets
 			config = function()
@@ -73,37 +72,42 @@ return {
 			}
 		})
 
-		-- setup custom lsp configs
-		local configs = require('lspconfig.configs')
-		configs["buf-beta-lsp"] = {
-			default_config = {
-				cmd = { 'buf', 'beta', 'lsp', "--timeout=0", "--log-format=text" },
-				filetypes = { 'proto' },
-				root_dir = require('lspconfig.util').root_pattern('buf.yaml', 'buf.gen.yaml', '.git'),
-			},
-		}
-		--	configs["clangd"] = { default_config = { filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' } } }
 
-		local lspconfig = require("lspconfig")
+		-- setup custom lsp configs
+		local lspconfig = vim.lsp.config
+		-- enable capabilities by default
+		--	lspconfig("*", { capabilities = require("cmp_nvim_lsp").default_capabilities() })
+		lspconfig("clangd", { filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' } })
+
+		-- enable lsp plugins with default configs
+		local lspenable = vim.lsp.enable
+
 		-- -- All languages: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 		-- Go: go install golang.org/x/tools/gopls@latest
-		lspconfig["gopls"].setup {}
-
+		lspenable("gopls")
 		-- Python: brew install pyright
-		lspconfig["pyright"].setup {}
-
+		lspenable("pyright")
 		-- https://github.com/bufbuild/buf/
 		-- brew install bufbuild/buf/buf
-		lspconfig["buf-beta-lsp"].setup {}
-
+		lspenable('buf_ls')
+		--		vim.lsp.enable('vue_ls')
+		--[[
+		lspconfig("volar", {
+			filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+			init_options = {
+				typescript = {
+					tsdk = vim.fn.expand("~/.npm-global/lib/node_modules/typescript/lib")
+				}
+			}
+		})
+		]] --
 		-- installation https://clangd.llvm.org/installation.html
-		lspconfig["clangd"].setup {}
-
+		lspenable("clangd")
 		-- for bash,json,lua, md and yaml
-		lspconfig["bashls"].setup {}
-		lspconfig["jsonls"].setup {}
-		lspconfig["lua_ls"].setup {}
-		lspconfig["marksman"].setup {}
-		lspconfig["yamlls"].setup {}
+		lspenable("bashls")
+		lspenable("jsonls")
+		lspenable("lua_ls")
+		lspenable("yamlls")
+		--	lspconfig["marksman"].setup {}
 	end
 }
