@@ -18,7 +18,7 @@ vim.opt.wildmenu = true
 
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
-
+vim.deprecate = function() end
 
 -- для wayland
 ---

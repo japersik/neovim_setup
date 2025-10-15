@@ -6,9 +6,12 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 			enabled = true
-		}, { "nvim-telescope/telescope-file-browser.nvim", enabled = true }
+		},
+		{
+			"nvim-telescope/telescope-file-browser.nvim",
+			enabled = true,
+		}
 	},
-	branch = "0.1.x",
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
@@ -61,7 +64,7 @@ return {
 		map("n", "<leader>fh", builtin.help_tags, opts)
 		-- !!! install ripgrep to use it
 		map("n", "<leader>fg", builtin.live_grep, opts)
-		map("n", "<leader>fb", builtin.buffers, opts)
+		map("n", "<leader>fb", ":Telescope current_buffer_fuzzy_find<CR>")
 		map("n", "<leader>fs", builtin.spell_suggest, opts) -- Lists spell options
 	end
 }
