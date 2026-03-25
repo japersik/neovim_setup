@@ -75,6 +75,8 @@ return {
 
 		-- setup custom lsp configs
 		local lspconfig = vim.lsp.config
+
+		lspconfig("gopls", { settings = { buildFlags = { "-tags=integration,e2e" } } })
 		-- enable capabilities by default
 		--	lspconfig("*", { capabilities = require("cmp_nvim_lsp").default_capabilities() })
 		lspconfig("clangd", { filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' } })
@@ -107,7 +109,10 @@ return {
 		lspenable("bashls")
 		lspenable("jsonls")
 		lspenable("lua_ls")
-		lspenable("yamlls")
+
+		lspenable("sqls")
+		lspconfig("postgres_lsp", { filetypes = { "sql" }, cmd = { "postgres-language-server", "lsp-proxy" } })
+		lspenable("postgres_lsp")
 		--	lspconfig["marksman"].setup {}
 	end
 }

@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		{ "nvim-treesitter/nvim-treesitter-textobjects" }, -- Syntax aware text-objects
 		{
-			"nvim-treesitter/nvim-treesitter-context",     -- Show code context
+			"nvim-treesitter/nvim-treesitter-context", -- Show code context
 			opts = { enable = true, mode = "topline", line_numbers = true }
 		}
 	},
@@ -18,7 +18,15 @@ return {
 				require("treesitter-context").disable()
 			end
 		})
-
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "yaml",
+			callback = function()
+				vim.opt_local.expandtab = true -- Use spaces instead of tabs
+				vim.opt_local.tabstop = 2 -- A tab counts as 2 spaces
+				vim.opt_local.shiftwidth = 2 -- Auto-indent uses 2 spaces
+				vim.opt_local.softtabstop = 2 -- Backspace/tab key deletes/inserts 2 spaces
+			end,
+		})
 		treesitter.setup({
 			ensure_installed = {
 				"c", "cpp",

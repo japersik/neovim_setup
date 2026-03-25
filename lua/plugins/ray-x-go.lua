@@ -6,7 +6,10 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	config = function()
-		require("go").setup()
+		require("go").setup({
+			build_tags = "e2e,integration",
+		}
+		)
 	end,
 	event = { "CmdlineEnter" },
 	ft = { "go", 'gomod' },
