@@ -1,5 +1,6 @@
 return {
 	"ray-x/navigator.lua",
+	branch = "nvim_0.11",
 	dependencies = {
 		{ "hrsh7th/nvim-cmp" }, { "nvim-treesitter/nvim-treesitter" },
 		{ "ray-x/guihua.lua", run = "cd lua/fzy && make" }, {

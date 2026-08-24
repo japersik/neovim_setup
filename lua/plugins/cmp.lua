@@ -93,6 +93,20 @@ return {
 		-- brew install bufbuild/buf/buf
 		lspenable('buf_ls')
 		--		vim.lsp.enable('vue_ls')
+		-- Регистрация нового типа файла buf-config для конфигураций buf
+		vim.filetype.add({
+			extension = {
+				-- Если вы используете файлы .yaml для конфигурации buf
+				-- Обратите внимание: это изменит тип для ВСЕХ .yaml файлов.
+				-- Если вам это не нужно, используйте вариант с filename ниже.
+			},
+			filename = {
+				["buf.yaml"] = "buf-config",
+				["buf.gen.yaml"] = "buf-config",
+				["buf.work.yaml"] = "buf-config",
+			},
+		})
+
 		--[[
 		lspconfig("volar", {
 			filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
